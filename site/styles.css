@@ -1240,8 +1240,60 @@ tbody tr:last-child td {
     padding: 14px 0 16px;
   }
 
+  .page-shell {
+    padding: 6px 0 16px;
+  }
+
+  .site-brand {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .site-brand__mark {
+    width: 62px;
+    height: 40px;
+  }
+
   .site-brand__text strong {
     font-size: 1.2rem;
+  }
+
+  .site-brand__text small {
+    font-size: 0.76rem;
+  }
+
+  .site-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .site-actions .button {
+    width: 100%;
+  }
+
+  .primary-nav a {
+    padding: 0 12px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .panel,
+  .service-bar,
+  .summary-card {
+    border-radius: 10px;
+  }
+
+  .summary-card {
+    padding: 9px 10px;
+  }
+
+  .toolbar-cell {
+    padding: 8px 9px;
+  }
+
+  .toolbar-label {
+    font-size: 0.64rem;
   }
 
   .competition-subnav__links {
@@ -1264,5 +1316,98 @@ tbody tr:last-child td {
   .competition-subnav__links a {
     min-width: fit-content;
     flex: 0 0 auto;
+  }
+
+  .live-ticker__item,
+  .match-row {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .match-row__status {
+    grid-template-columns: auto auto;
+    gap: 6px 8px;
+    align-items: center;
+  }
+
+  .match-row__teams {
+    gap: 5px;
+  }
+
+  .team-scoreline strong {
+    font-size: 0.94rem;
+  }
+
+  .team-scoreline span {
+    min-width: 22px;
+    font-size: 1rem;
+  }
+
+  .match-row__meta,
+  .timeline-preview,
+  .match-row__venue {
+    font-size: 0.72rem;
+  }
+
+  .match-row .detail-link,
+  .live-ticker__item .detail-link {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .competition-header-block__title {
+    font-size: 1.38rem;
+  }
+
+  .competition-header-block__actions {
+    width: 100%;
+  }
+
+  .competition-header-block__actions .detail-link {
+    flex: 1 1 120px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-top__inner,
+  .primary-nav__inner,
+  .page-shell {
+    width: min(1200px, calc(100vw - 16px));
+  }
+
+  .landing-hero {
+    padding: 16px 14px;
+    border-radius: 14px;
+  }
+
+  .landing-hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .landing-hero p {
+    font-size: 0.92rem;
+  }
+
+  .landing-stat {
+    padding: 12px 13px;
+  }
+
+  .competition-grid {
+    padding: 10px;
+  }
+
+  .competition-card {
+    padding: 9px;
+  }
+
+  .section-head,
+  .group-panel__head {
+    padding: 8px 9px;
+  }
+
+  th,
+  td {
+    padding: 8px;
   }
 }

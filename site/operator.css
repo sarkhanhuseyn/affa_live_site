@@ -161,4 +161,29 @@
   .operator-mini-title {
     line-height: 1.3;
   }
+
+  .button-row .button {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .operator-status,
+  .operator-inline-note,
+  .operator-matchbar__meta {
+    font-size: 0.74rem;
+  }
+
+  .operator-matchbar__teams strong {
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  .event-log__item,
+  .player-row,
+  .event-row {
+    gap: 8px;
+    padding: 9px 0;
+  }
 }

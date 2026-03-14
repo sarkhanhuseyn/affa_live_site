@@ -70,7 +70,7 @@ function buildSupplementalMatches(sourceMatches) {
         events: [],
         lineups: emptyLineups(),
         bulletin_id: bulletin.bulletin_id,
-        source_label: bulletin.source_label || "Official bulletin",
+        source_label: bulletin.source_label || "Rəsmi bülleten",
         group_name: fixture.group_name || "",
       };
       const identity = matchIdentity(match);
@@ -191,11 +191,37 @@ function statusButtonClass(currentStatus, value) {
 
 function formatDate(value) {
   const date = new Date(`${value}T00:00:00`);
-  return new Intl.DateTimeFormat("en-GB", {
+  return new Intl.DateTimeFormat("az-AZ", {
     day: "2-digit",
     month: "short",
     year: "numeric",
   }).format(date);
+}
+
+function eventTypeLabel(value) {
+  return {
+    goal: "Qol",
+    "yellow-card": "Sarı vərəqə",
+    "red-card": "Qırmızı vərəqə",
+    substitution: "Əvəzetmə",
+    note: "Qeyd",
+  }[value] || value;
+}
+
+function teamSideLabel(value) {
+  return {
+    home: "Ev",
+    away: "Səfər",
+  }[value] || value;
+}
+
+function operatorStatusLabel(value) {
+  return {
+    scheduled: "Planlandı",
+    live: "Canlı",
+    halftime: "Fasilə",
+    finished: "Bitdi",
+  }[value] || value;
 }
 
 function statusLabel(match) {
@@ -203,7 +229,7 @@ function statusLabel(match) {
   if (match.status === "halftime") return "HT";
   if (match.status === "live") {
     const added = match.added_time ? `+${match.added_time}` : "";
-    return match.match_minute ? `${match.match_minute}${added}'` : "LIVE";
+    return match.match_minute ? `${match.match_minute}${added}'` : "CANLI";
   }
   return match.kickoff_label || "NÖVBƏTİ";
 }
@@ -370,13 +396,13 @@ function renderOperator() {
       <div class="operator-stack">
         <article class="detail-panel">
           <div class="section-head">
-            <div class="section-title">${match.home_team} vs ${match.away_team}</div>
+            <div class="section-title">${match.home_team} - ${match.away_team}</div>
             <div class="section-meta">${formatDate(match.match_date)} · ${match.round_label || "Tur"}</div>
           </div>
           <div class="content-pad">
             <div class="operator-matchbar">
               <div class="operator-matchbar__status">
-                <span class="status-pill ${badgeClass(match.status)}">${match.status.toUpperCase()}</span>
+                <span class="status-pill ${badgeClass(match.status)}">${operatorStatusLabel(match.status)}</span>
                 <span>${statusLabel(match)}</span>
               </div>
               <div class="operator-matchbar__teams">
@@ -526,8 +552,8 @@ function renderOperator() {
                       (event, index) => `
                         <div class="event-log__item">
                           <div>
-                            <div class="operator-mini-title">${event.minute || ""}' ${event.player_name || event.note || event.event_type}</div>
-                            <div class="section-meta">${event.team_side} · ${event.event_type} ${event.note ? `· ${event.note}` : ""}</div>
+                            <div class="operator-mini-title">${event.minute || ""}' ${event.player_name || event.note || eventTypeLabel(event.event_type)}</div>
+                            <div class="section-meta">${teamSideLabel(event.team_side)} · ${eventTypeLabel(event.event_type)} ${event.note ? `· ${event.note}` : ""}</div>
                           </div>
                           <button class="button button-danger" data-remove-event="${index}" type="button">Sil</button>
                         </div>

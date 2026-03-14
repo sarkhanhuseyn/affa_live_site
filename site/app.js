@@ -77,7 +77,7 @@ function buildSupplementalMatches(sourceMatches) {
         lineups: emptyLineups(),
         events: [],
         bulletin_id: bulletin.bulletin_id,
-        source_label: bulletin.source_label || "Official bulletin",
+        source_label: bulletin.source_label || "Rəsmi bülleten",
       };
       const identity = matchIdentity(match);
       if (!seen.has(identity)) {
@@ -234,7 +234,7 @@ function mergeDataset(source) {
 
 function formatDate(value) {
   const date = new Date(`${value}T00:00:00`);
-  return new Intl.DateTimeFormat("en-GB", {
+  return new Intl.DateTimeFormat("az-AZ", {
     day: "2-digit",
     month: "short",
     year: "numeric",
@@ -243,10 +243,35 @@ function formatDate(value) {
 
 function formatShortDate(value) {
   const date = new Date(`${value}T00:00:00`);
-  return new Intl.DateTimeFormat("en-GB", {
+  return new Intl.DateTimeFormat("az-AZ", {
     day: "2-digit",
     month: "2-digit",
   }).format(date);
+}
+
+function eventTypeLabel(value) {
+  return {
+    goal: "Qol",
+    "yellow-card": "Sarı vərəqə",
+    "red-card": "Qırmızı vərəqə",
+    substitution: "Əvəzetmə",
+    note: "Qeyd",
+  }[value] || value;
+}
+
+function teamSideLabel(value) {
+  return {
+    home: "Ev",
+    away: "Səfər",
+  }[value] || value;
+}
+
+function formCodeLabel(value) {
+  return {
+    W: "Q",
+    D: "B",
+    L: "M",
+  }[value] || value;
 }
 
 function statusLabel(match) {
@@ -254,16 +279,16 @@ function statusLabel(match) {
   if (match.status === "halftime") return "HT";
   if (match.status === "live") {
     const added = match.added_time ? `+${match.added_time}` : "";
-    return match.match_minute ? `${match.match_minute}${added}'` : "LIVE";
+    return match.match_minute ? `${match.match_minute}${added}'` : "CANLI";
   }
   return match.kickoff_label || "NÖVBƏTİ";
 }
 
 function liveBadgeLabel(match) {
-  if (match.status === "live") return "LIVE";
+  if (match.status === "live") return "CANLI";
   if (match.status === "halftime") return "HT";
   if (match.status === "finished") return "FT";
-  return "TIME";
+  return "SAAT";
 }
 
 function unique(values) {
@@ -458,9 +483,9 @@ function renderCompetitionDirectory(selectedCompetition, route) {
           </div>
           <div class="competition-card__meta">${competition.category} · ${competition.region}</div>
           <div class="competition-card__stats">
-            <span>${stats.matches} matches</span>
-            <span>${stats.standings} rows</span>
-            <span>${stats.clubs} clubs</span>
+            <span>${stats.matches} oyun</span>
+            <span>${stats.standings} sətir</span>
+            <span>${stats.clubs} klub</span>
           </div>
         </a>
       `;
@@ -720,7 +745,7 @@ function renderCompetitionDetail() {
             <div class="competition-hero__main">
             <div class="competition-hero__badge ${badge.className}">${badge.label}</div>
             <p>
-              AFFA public import currently exposes ${stats.matches} matches, ${stats.standings} standings rows, and ${stats.players} player rows for this competition.${bulletinStats.fixtures ? ` An additional official bulletin adds ${bulletinStats.fixtures} scheduled fixtures.` : ""}
+              Bu yarış üçün AFFA açıq idxalı hazırda ${stats.matches} oyun, ${stats.standings} cədvəl sətri və ${stats.players} oyunçu sətri göstərir.${bulletinStats.fixtures ? ` Əlavə rəsmi bülleten isə ${bulletinStats.fixtures} planlaşdırılmış oyun daxil edir.` : ""}
             </p>
           </div>
           <div class="competition-hero__stats">
@@ -931,7 +956,7 @@ function renderTimelinePreview(match) {
     .slice()
     .sort((a, b) => (a.minute || 0) - (b.minute || 0))
     .slice(-3)
-    .map((event) => `<div><strong>${event.minute || ""}'</strong> ${event.player_name || event.note || event.event_type}</div>`)
+    .map((event) => `<div><strong>${event.minute || ""}'</strong> ${event.player_name || event.note || eventTypeLabel(event.event_type)}</div>`)
     .join("");
 }
 
@@ -1190,7 +1215,8 @@ function renderClubs() {
             ${club.recent_matches.map((match) => {
               const code = resultCode(club.team_name, match);
               const pillClass = code === "W" ? "pill-win" : code === "L" ? "pill-loss" : "pill-draw";
-              return `<span class="form-pill ${pillClass}">${code}</span>`;
+              return `<span class="form-pill ${pillClass}">${formCodeLabel(code)}</span>`;
+              
             }).join("")}
           </div>
           <div class="table-wrap" style="margin-top:12px;">
@@ -1397,7 +1423,7 @@ function renderMatchDetail() {
                       <div class="event-row">
                         <div>
                           <strong>${event.player_name || event.note || event.event_type}</strong>
-                          <div class="section-meta">${cleanText(event.team_side).toUpperCase()} · ${event.event_type}</div>
+                          <div class="section-meta">${teamSideLabel(event.team_side)} · ${eventTypeLabel(event.event_type)}</div>
                         </div>
                         <div><strong>${event.minute || ""}'</strong></div>
                       </div>
