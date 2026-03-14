@@ -334,18 +334,18 @@ function getFeedBadge(stats) {
   const hasStandings = stats.standings > 0;
   const hasPlayers = stats.players > 0;
   if (hasMatches && hasStandings && hasPlayers) {
-    return { label: "Tam məlumat", className: "competition-card__badge--full" };
+    return { label: "Tam statistika", className: "competition-card__badge--full" };
   }
   if (hasMatches && hasStandings) {
-    return { label: "Oyunlar + cədvəl", className: "competition-card__badge--hybrid" };
+    return { label: "Oyunlar və cədvəl", className: "competition-card__badge--hybrid" };
   }
   if (hasMatches) {
-    return { label: "Yalnız oyunlar", className: "competition-card__badge--live" };
+    return { label: "Oyunlar", className: "competition-card__badge--live" };
   }
   if (hasStandings || hasPlayers) {
-    return { label: "Yalnız cədvəl", className: "competition-card__badge--tables" };
+    return { label: "Cədvəl", className: "competition-card__badge--tables" };
   }
-  return { label: "Yalnız indeks", className: "competition-card__badge--empty" };
+  return { label: "Məlumat gözlənilir", className: "competition-card__badge--empty" };
 }
 
 function competitionOptionsMarkup(selectedCompetition, route = "all") {
@@ -442,7 +442,7 @@ function renderLandingIntro(matches, selectedCompetition, selectedDate) {
       <div class="landing-hero__copy">
         <div class="landing-hero__kicker">AFFA Canlı nəticələr</div>
         <h1>Bu günün oyunları, canlı hesablar və rəsmi yarış məlumatları bir mərkəzdə.</h1>
-        <p>${selectedDate ? `${formatDate(selectedDate)}` : "Cari gün"} üzrə ${competitionLabel} üçün təqvim, canlı oyunlar, cədvəllər və operator yeniləmələri burada görünür.</p>
+        <p>${selectedDate ? `${formatDate(selectedDate)}` : "Cari gün"} üzrə ${competitionLabel} üçün təqvim, canlı oyunlar, cədvəllər və əsas statistika burada toplanıb.</p>
         <div class="landing-hero__actions">
           <a class="button button-primary" href="#/matches?scope=today&competition=all">Bu gün</a>
           <a class="button button-secondary" href="#/competitions">Yarışlara bax</a>
@@ -452,7 +452,7 @@ function renderLandingIntro(matches, selectedCompetition, selectedDate) {
         <div class="landing-stat"><span>Canlı indi</span><strong>${totalLive}</strong></div>
         <div class="landing-stat"><span>Bu ekranda</span><strong>${matches.length}</strong></div>
         <div class="landing-stat"><span>Yarış sayı</span><strong>${getCompetitions().length}</strong></div>
-        <div class="landing-stat"><span>Bülleten</span><strong>${(manualDataset.supplements || []).length}</strong></div>
+        <div class="landing-stat"><span>Əlavə elanlar</span><strong>${(manualDataset.supplements || []).length}</strong></div>
       </div>
     </section>
   `;
@@ -495,7 +495,7 @@ function renderCompetitionDirectory(selectedCompetition, route) {
     <section class="panel">
       <div class="section-head">
         <div class="section-title">Yarışlar</div>
-        <div class="section-meta">AFFA indeksindən ${getCompetitions().length} yarış</div>
+        <div class="section-meta">${getCompetitions().length} yarış</div>
       </div>
       <div class="competition-grid">${cards}</div>
     </section>
@@ -655,16 +655,15 @@ function renderCompetitionDetail() {
         </article>
         <article class="table-panel">
           <div class="section-head">
-            <div class="section-title">Məlumat əhatəsi</div>
-            <div class="section-meta">AFFA idxal vəziyyəti</div>
+            <div class="section-title">Məlumatlar</div>
+            <div class="section-meta">Bu yarış üzrə görünən bölmələr</div>
           </div>
         <div class="content-pad">
           <div class="coverage-list">
-              <div class="coverage-row"><strong>Təqvim</strong><span>${stats.matches ? "Var" : "Açıq deyil"}</span></div>
-              <div class="coverage-row"><strong>Cədvəl</strong><span>${stats.standings ? "Var" : "Açıq deyil"}</span></div>
-              <div class="coverage-row"><strong>Oyunçular</strong><span>${stats.players ? "Var" : "Açıq deyil"}</span></div>
-              <div class="coverage-row"><strong>Bülletenlər</strong><span>${bulletinStats.fixtures || bulletinStats.suspensions ? `${bulletinStats.bulletins} əlavə olunub` : "Yoxdur"}</span></div>
-              <div class="coverage-row"><strong>Operator qatı</strong><span>Lokal olaraq aktivdir</span></div>
+              <div class="coverage-row"><strong>Təqvim</strong><span>${stats.matches ? "Mövcuddur" : "Yoxdur"}</span></div>
+              <div class="coverage-row"><strong>Cədvəl</strong><span>${stats.standings ? "Mövcuddur" : "Yoxdur"}</span></div>
+              <div class="coverage-row"><strong>Oyunçular</strong><span>${stats.players ? "Mövcuddur" : "Yoxdur"}</span></div>
+              <div class="coverage-row"><strong>Əlavə elanlar</strong><span>${bulletinStats.fixtures || bulletinStats.suspensions ? `${bulletinStats.bulletins} elan` : "Yoxdur"}</span></div>
             </div>
           </div>
         </article>
@@ -745,15 +744,15 @@ function renderCompetitionDetail() {
             <div class="competition-hero__main">
             <div class="competition-hero__badge ${badge.className}">${badge.label}</div>
             <p>
-              Bu yarış üçün AFFA açıq idxalı hazırda ${stats.matches} oyun, ${stats.standings} cədvəl sətri və ${stats.players} oyunçu sətri göstərir.${bulletinStats.fixtures ? ` Əlavə rəsmi bülleten isə ${bulletinStats.fixtures} planlaşdırılmış oyun daxil edir.` : ""}
+              Bu yarış üzrə hazırda ${stats.matches} oyun, ${stats.standings} cədvəl sətri və ${stats.players} oyunçu göstəricisi təqdim olunur.${bulletinStats.fixtures ? ` Əlavə elanlarda isə ${bulletinStats.fixtures} planlaşdırılmış oyun yer alır.` : ""}
             </p>
           </div>
           <div class="competition-hero__stats">
             <div class="stat-box"><span>Oyun günü</span><strong>${stats.dates}</strong></div>
             <div class="stat-box"><span>Canlı indi</span><strong>${stats.live}</strong></div>
             <div class="stat-box"><span>Klub</span><strong>${stats.clubs}</strong></div>
-            <div class="stat-box"><span>Bülleten</span><strong>${bulletinStats.bulletins}</strong></div>
-            <div class="stat-box"><span>İdxal sətri</span><strong>${summaryRows ? summaryRows.matches + summaryRows.standings + summaryRows.players : 0}</strong></div>
+            <div class="stat-box"><span>Əlavə elan</span><strong>${bulletinStats.bulletins}</strong></div>
+            <div class="stat-box"><span>Statistika sətri</span><strong>${summaryRows ? summaryRows.matches + summaryRows.standings + summaryRows.players : 0}</strong></div>
           </div>
         </div>
         ${renderFeedNotice(selectedCompetition)}
@@ -826,8 +825,8 @@ function renderFeedNotice(selectedCompetition) {
   const competition = getCompetition(selectedCompetition);
   return `
     <section class="panel panel-note">
-      <strong>${competition?.name || "Seçilmiş yarış"} AFFA-da mövcuddur</strong>
-      <span>İctimai səhifə tapıldı, amma idxal zamanı AFFA tərəfindən oxuna bilən təqvim, cədvəl və ya bombardir sətirləri təqdim edilmədi.</span>
+      <strong>${competition?.name || "Seçilmiş yarış"} üçün hazırda ətraflı məlumat görünmür</strong>
+      <span>Bu yarış üzrə oyun, cədvəl və ya oyunçu məlumatı yeniləndikcə burada göstəriləcək.</span>
     </section>
   `;
 }
@@ -951,7 +950,7 @@ function renderFilters(selectedCompetition, selectedDate, scope) {
 }
 
 function renderTimelinePreview(match) {
-  if (!match.events.length) return '<span class="subtle">Operator hadisəsi yoxdur</span>';
+  if (!match.events.length) return '<span class="subtle">Hadisə qeydi yoxdur</span>';
   return match.events
     .slice()
     .sort((a, b) => (a.minute || 0) - (b.minute || 0))
@@ -1316,7 +1315,7 @@ function renderLineupSide(teamName, squad) {
     <article class="detail-panel">
       <div class="section-head">
         <div class="section-title">${teamName}</div>
-        <div class="section-meta">Operator paneli</div>
+        <div class="section-meta">Komanda heyəti</div>
       </div>
       <div class="content-pad">
         <div class="section-title">Start heyəti</div>
@@ -1386,7 +1385,7 @@ function renderMatchDetail() {
             <article class="detail-panel">
               <div class="section-head">
                   <div class="section-title">Bu turu buraxmalı olanlar</div>
-                <div class="section-meta">Rəsmi bülleten siyahısı</div>
+                <div class="section-meta">Rəsmi elan əsasında</div>
               </div>
               <div class="content-pad">
                 <div class="timeline-list">
@@ -1412,7 +1411,7 @@ function renderMatchDetail() {
       <article class="detail-panel">
         <div class="section-head">
           <div class="section-title">Hadisələr axını</div>
-          <div class="section-meta">Ayrı operator paneli</div>
+          <div class="section-meta">Oyunun gedişi</div>
         </div>
         <div class="content-pad">
           ${
@@ -1430,7 +1429,7 @@ function renderMatchDetail() {
                     `
                   )
                   .join("")}</div>`
-              : '<div class="empty-state">Operator panelində hadisə daxil edilməyib.</div>'
+              : '<div class="empty-state">Bu oyun üçün hadisə qeydi yoxdur.</div>'
           }
         </div>
       </article>
@@ -1495,9 +1494,8 @@ async function loadData() {
   operatorStore = nextStore;
   dataset = mergeDataset(rawDataset);
   const stamp = new Date(rawDataset.generated_at).toLocaleString();
-  const overrideCount = Object.keys(readOperatorStore().matches || {}).length;
   const bulletinCount = (manualDataset.supplements || []).length;
-  dataStatus.textContent = `AFFA yenilənməsi ${stamp} · bülleten ${bulletinCount} · operator düzəlişi ${overrideCount}`;
+  dataStatus.textContent = `Son yenilənmə ${stamp}${bulletinCount ? ` · ${bulletinCount} əlavə elan` : ""}`;
   render();
 }
 
