@@ -274,6 +274,21 @@ function formCodeLabel(value) {
   }[value] || value;
 }
 
+function competitionCategoryLabel(value) {
+  return {
+    Senior: "Böyüklər",
+    Youth: "Gənclər",
+    Girls: "Qızlar",
+    Futsal: "Futzal",
+  }[value] || value;
+}
+
+function competitionRegionLabel(value) {
+  return {
+    National: "Ölkə üzrə",
+  }[value] || value;
+}
+
 function statusLabel(match) {
   if (match.status === "finished") return "FT";
   if (match.status === "halftime") return "HT";
@@ -481,7 +496,7 @@ function renderCompetitionDirectory(selectedCompetition, route) {
             <strong>${competition.name}</strong>
             <span class="competition-card__badge ${badge.className}">${badge.label}</span>
           </div>
-          <div class="competition-card__meta">${competition.category} · ${competition.region}</div>
+          <div class="competition-card__meta">${competitionCategoryLabel(competition.category)} · ${competitionRegionLabel(competition.region)}</div>
           <div class="competition-card__stats">
             <span>${stats.matches} oyun</span>
             <span>${stats.standings} sətir</span>
@@ -728,7 +743,7 @@ function renderCompetitionDetail() {
         </div>
         <div class="competition-header-block__top">
           <div>
-            <div class="competition-header-block__kicker">${competition?.category || ""} yarış</div>
+            <div class="competition-header-block__kicker">${competitionCategoryLabel(competition?.category || "")} yarışı</div>
             <h1 class="competition-header-block__title">${competition?.name || "Yarış"}</h1>
           </div>
           <div class="competition-header-block__actions">
