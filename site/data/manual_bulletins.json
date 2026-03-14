@@ -1,0 +1,196 @@
+{
+  "supplements": [
+    {
+      "bulletin_id": "affa-gnclr-liqasi-2026-03-14-ii-merhele-i-tur-ab",
+      "competition_code": "affa-gnclr-liqas",
+      "competition_name": "AFFA Gənclər Liqası",
+      "title": "AFFA Gənclər Liqasının II mərhələsi, A və B qrupları, I tur",
+      "published_date": "2026-03-14",
+      "phase_label": "II mərhələ",
+      "round_label": "I tur",
+      "source_label": "Official AFFA bulletin",
+      "fixtures": [
+        {
+          "group_name": "A qrupu",
+          "match_date": "2026-03-14",
+          "kickoff_label": "13:00",
+          "venue": "Bayıl Arena",
+          "home_team": "Sabah FK",
+          "away_team": "Turan Tovuz FK"
+        },
+        {
+          "group_name": "A qrupu",
+          "match_date": "2026-03-14",
+          "kickoff_label": "14:00",
+          "venue": "Qəbələ şəhər stadionu",
+          "home_team": "Qəbələ İK",
+          "away_team": "Neftçi PFK"
+        },
+        {
+          "group_name": "A qrupu",
+          "match_date": "2026-03-15",
+          "kickoff_label": "16:00",
+          "venue": "Sərhədçi İdman Mərkəzi",
+          "home_team": "Qarabağ FK",
+          "away_team": "Zirə PFK"
+        },
+        {
+          "group_name": "B qrupu",
+          "match_date": "2026-03-13",
+          "kickoff_label": "13:30",
+          "venue": "Rekord Arena",
+          "home_team": "Şamaxı FK",
+          "away_team": "Araz Naxçıvan PFK"
+        },
+        {
+          "group_name": "B qrupu",
+          "match_date": "2026-03-14",
+          "kickoff_label": "15:00",
+          "venue": "Socar Polymer Arena",
+          "home_team": "Sumqayıt FK",
+          "away_team": "Dinamo (Bakı) FK"
+        },
+        {
+          "group_name": "B qrupu",
+          "match_date": "2026-03-14",
+          "kickoff_label": "16:00",
+          "venue": "Gəncə şəhər stadionu",
+          "home_team": "Kəpəz PFK",
+          "away_team": "European FA"
+        }
+      ],
+      "suspensions": [
+        {
+          "team_name": "Şamaxı FK",
+          "person_name": "Həsən Vəliyev",
+          "reason": "XV, XVI, XX və XXII turlarda aldığı sarı vərəqələrə görə"
+        },
+        {
+          "team_name": "Şamaxı FK",
+          "person_name": "Mehman Xanlarov",
+          "reason": "XI, XII, XIII və XXII turlarda aldığı sarı vərəqələrə görə"
+        },
+        {
+          "team_name": "Kəpəz PFK",
+          "person_name": "Elxan Məmmədov",
+          "reason": "XI, XIII, XVI və XXII turlarda aldığı sarı vərəqələrə görə"
+        },
+        {
+          "team_name": "European FA",
+          "person_name": "Nicat Quluzadə",
+          "reason": "IV, V, XIII və XXII turlarda aldığı sarı vərəqələrə görə"
+        },
+        {
+          "team_name": "Turan Tovuz FK",
+          "person_name": "Ayxan Abbaszadə",
+          "reason": "XII, XIV, XVIII və XXII turlarda aldığı sarı vərəqələrə görə"
+        },
+        {
+          "team_name": "Turan Tovuz FK",
+          "person_name": "Məhəmmədəli Məmmədov",
+          "reason": "XVII, XVIII, XX və XXII turlarda aldığı sarı vərəqələrə görə"
+        },
+        {
+          "team_name": "Turan Tovuz FK",
+          "person_name": "Tunar Muradov",
+          "reason": "XIX turda aldığı qırmızı vərəqəyə görə (2 oyun)"
+        }
+      ]
+    },
+    {
+      "bulletin_id": "affa-u16-liqasi-2026-03-14-ii-merhele-i-dovre-vii-viii-ab",
+      "competition_code": "affa-u-16-liqas",
+      "competition_name": "AFFA U-16 Liqası",
+      "title": "AFFA U-16 Liqası, A və B qrupları, II mərhələ, I dövrə, VII-VIII tur",
+      "published_date": "2026-03-14",
+      "phase_label": "II mərhələ",
+      "round_label": "VII-VIII tur",
+      "source_label": "Official AFFA bulletin",
+      "fixtures": [
+        {
+          "group_name": "A qrupu",
+          "match_date": "2026-03-14",
+          "kickoff_label": "14:00",
+          "venue": "Milli Aviasiya Akademiyası",
+          "home_team": "European FA",
+          "away_team": "Qəbələ İK"
+        },
+        {
+          "group_name": "A qrupu",
+          "match_date": "2026-03-14",
+          "kickoff_label": "12:00",
+          "venue": "Sərhədçi İdman Mərkəzi",
+          "home_team": "Qarabağ FK",
+          "away_team": "Sumqayıt FK"
+        },
+        {
+          "group_name": "A qrupu",
+          "match_date": "2026-03-14",
+          "kickoff_label": "16:30",
+          "venue": "Bayıl Arena",
+          "home_team": "Sabah FK",
+          "away_team": "Zirə PFK"
+        },
+        {
+          "group_name": "A qrupu",
+          "match_date": "2026-03-13",
+          "kickoff_label": "14:00",
+          "venue": "Şəmkir OİK",
+          "home_team": "Turan Tovuz FK",
+          "away_team": "Neftçi PFK"
+        },
+        {
+          "group_name": "B qrupu",
+          "match_date": "2026-03-14",
+          "kickoff_label": "16:30",
+          "venue": "Rekord Arena (Əhmədli)",
+          "home_team": "Dinamo FK (Bakı)",
+          "away_team": "Kəpəz PFK"
+        },
+        {
+          "group_name": "B qrupu",
+          "match_date": "2026-03-14",
+          "kickoff_label": "13:00",
+          "venue": "Şirvanlı kənd stadionu",
+          "home_team": "Metak PFK",
+          "away_team": "Şəfa FK"
+        },
+        {
+          "group_name": "B qrupu",
+          "match_date": "2026-03-15",
+          "kickoff_label": "14:15",
+          "venue": "Rekord Arena (Əhmədli)",
+          "home_team": "Araz-Naxçıvan PFK",
+          "away_team": "Şamaxı FK"
+        }
+      ],
+      "suspensions": [
+        {
+          "team_name": "Neftçi PFK",
+          "person_name": "Əli Musazadə",
+          "reason": "XVII turda aldığı qırmızı vərəqəyə görə - 1 oyun"
+        },
+        {
+          "team_name": "Qarabağ FK",
+          "person_name": "Rauf Əliyev",
+          "reason": "XIX turda aldığı qırmızı vərəqəyə görə - 3 oyun"
+        },
+        {
+          "team_name": "European FA",
+          "person_name": "Amin Abdullayev",
+          "reason": "XXI turda aldığı qırmızı vərəqəyə görə - 1 oyun"
+        },
+        {
+          "team_name": "Araz-Naxçıvan PFK",
+          "person_name": "İlkin Mikayılov",
+          "reason": "XXI turda aldığı qırmızı vərəqəyə görə - 1 oyun"
+        },
+        {
+          "team_name": "Kəpəz PFK",
+          "person_name": "Ramal Cəfərli",
+          "reason": "XXI turda aldığı qırmızı vərəqəyə görə - 1 oyun"
+        }
+      ]
+    }
+  ]
+}
