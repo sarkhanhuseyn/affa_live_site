@@ -112,8 +112,8 @@ textarea {
 }
 
 .site-brand__mark {
-  width: 112px;
-  height: 72px;
+  width: 156px;
+  height: 96px;
   border-radius: 18px;
   display: grid;
   place-items: center;
@@ -1252,8 +1252,8 @@ tbody tr:last-child td {
   }
 
   .site-brand__mark {
-    width: 88px;
-    height: 56px;
+    width: 126px;
+    height: 78px;
   }
 
   .site-brand__text strong {
@@ -1381,6 +1381,12 @@ tbody tr:last-child td {
   .landing-hero {
     padding: 16px 14px;
     border-radius: 14px;
+  }
+
+  .site-brand__mark {
+    width: 108px;
+    height: 68px;
+    border-radius: 16px;
   }
 
   .landing-hero h1 {
